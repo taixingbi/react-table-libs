@@ -2,7 +2,10 @@
 
 ```
 npm i react-router-dom
-npm i react-router
+
+npm i mui-datatables --save
+npm i @material-ui/core
+npm i @material-ui/icons
 ```
 
 
