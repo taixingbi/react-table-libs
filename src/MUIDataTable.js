@@ -17,6 +17,7 @@ export default class Demo extends Component {
   state = {
     columns: columns,
     data: data,
+    rowsSelected:null,
   }
   
   componentDidMount() {
@@ -27,8 +28,21 @@ export default class Demo extends Component {
     const {data, columns} = this.state;
 
     const options = {
-      filter: 'true',
+      filter: true,
       onChangeRowsPerPage: 2,
+      selectableRows:"single",
+      selectableRowsOnClick:true,
+      search: true,
+      print:false,
+      download:false,
+      viewColumns:false,
+      onRowsSelect: (rowsSelected, allRows) => {
+        const selected = allRows.map(item => item.index);
+        this.setState({
+          rowsSelected: selected,
+        });
+      },    
+
     };
 
     return (
@@ -43,6 +57,8 @@ export default class Demo extends Component {
             columns={columns}
             options={options}
           />
+
+          {this.state.rowsSelected}
         </div>
       </div>
 
